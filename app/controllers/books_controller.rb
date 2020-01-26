@@ -26,7 +26,7 @@ end
   	@_book=Book.new
   	@book=Book.find(params[:id])
     @user=@book.user
-    @postcomment = PostComment.new
+    @post_comment = PostComment.new
   end
   def create
   	book = Book.new(book_params)

@@ -101,6 +101,7 @@
 					</tr>
 				</tbody>
 			</table>
+		</div>
 			<div class="row">
 			<% @book.post_comments.each do |comment| %>
 			<table class="table">
@@ -110,19 +111,19 @@
 		</td>
 		<td>
 			<% if comment.user.id == current_user.id %>
-				<td>
 			<%= link_to "Destroy", book_post_comment_path(comment.id) , method: :delete,"data-confirm"=>"本当に消しますか?" %>
 			<% end %>
 		</td>
 	</tr>
-			<% end %>
 		</table>
-		</div>
-			<%= form_for [@book, @postcomment] do |new| %>
-			<%= new.text_area :comment %>
-			<%= new.submit"送信" %>
+		<% end %>
+	<div>
+			<%= form_for [@book, @post_comment] do |t| %>
+			<%= t.text_area :comment %>
+			<%= t.submit "送信" %>
 			<% end %>
 		</div>
+	</div>
 	</div>
 </div>
 </div>
