@@ -18,9 +18,17 @@ class UsersController < ApplicationController
     end
   end
   def index
-  	@users=User.all
+  	@users=User.where.not(id: current_user.id)
     @user=current_user
     @book=Book.new
+  end
+  def follow
+    user = User.find(params[:id])
+    @users = user.followings.all
+  end
+  def follower
+    user = User.find(params[:id])
+    @users = user.followers.all
   end
 
   def show
