@@ -1,0 +1,33 @@
+<div class="container">
+<% if @user_or_book == "1" %>
+	<h1>User</h1>
+	<table class="table">
+		<% @users.each do |user| %>
+		<thead>
+			<tr>
+				<th>
+					<%= user.name %>
+				</th>
+				<th>
+				<%=link_to "Show",user_path(user.id)%>
+			</th>
+			</tr>
+		</thead>
+		<% end %>
+	</table>
+	<% elsif @user_or_book == "2" %>
+	<h1>Book</h1>
+	<table>
+		<% @books.each do |book| %>
+		<thead>
+			<tr>
+				<th>
+					<%= book.title %>
+				</th>
+			</tr>
+		</thead>
+		<% end %>
+	</table>
+	<%else %>
+	<% end %>
+</div>

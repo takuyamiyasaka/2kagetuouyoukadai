@@ -47,30 +47,40 @@
           </li>
           <li>
            <%=link_to abouts_path do %>
-           <i class="glyphicon glyphicon-link" aria-hidden="true"> about</i>
-           <% end %>
-          </li>
-          <li>
-          <%=link_to new_user_registration_path do %>
-          <i class="glyphicon glyphicon-share" aria-hidden="true">
-          signup</i>
-          <% end %>
-         </li>
-          <li>
-            <%= link_to  new_user_session_path do %>
-            <i class="glyphicon glyphicon-log-in" aria-hidden="true"> login</i>
+             <i class="glyphicon glyphicon-link" aria-hidden="true"> about</i>
+             <% end %>
+            </li>
+            <li>
+            <%=link_to new_user_registration_path do %>
+            <i class="glyphicon glyphicon-share" aria-hidden="true">
+            signup</i>
             <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
-    </header>
-    <%= yield %>
-    <div class="row">
-      <div class="col-xs-offset-9 col-lg-3">
-      CopyRight Infratop.inc
+           </li>
+            <li>
+              <%= link_to  new_user_session_path do %>
+              <i class="glyphicon glyphicon-log-in" aria-hidden="true"> login</i>
+              <% end %>
+              </li>
+                <% end %>
+              </ul>
+              </nav>
+            </div>
+          </header>
+          <div class="container text-center">
+          <% if user_signed_in? %>
+          <%= form_tag("/search", :method => "get") do %>
+          <%= text_field_tag :search %>
+          <%= select_tag(:option, options_for_select([["user","1"],["book","2"]]))%>
+          <%= select_tag(:choice, options_for_select([["完全一致","1"],["前方一致","2"],["後方一致","3"],["部分一致","4"]])) %>
+          <%= submit_tag "検索",:name => nil, class: "btn btn-info" %>
+          <% end %>
+          <% end %>
+          </div>
+          <%= yield %>
+        <div class="row">
+        <div class="col-xs-offset-9 col-lg-3">
+        CopyRight Infratop.inc
+      </div>
     </div>
-  </div>
   </body>
 </html>
